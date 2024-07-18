@@ -1,4 +1,5 @@
 @charset "utf-8";
+@use '../variables';
 
 .new-task {
   width: 1000px;
@@ -6,10 +7,12 @@
 }
 
 .new-task-form {
-  color: #555555;
+  color: variables.$gray;
 }
 
-.new-task-select-list, .new-task-title, .new-task-detail {
+.new-task-select-list,
+.new-task-title,
+.new-task-detail {
   width: 300px;
   margin-bottom: 25px;
 }
@@ -19,7 +22,7 @@
 }
 
 .new-task-button {
-  background-color: #242F9B;
+  background-color: variables.$blue;
   color: #ffffff;
   width: 80px;
   height: 40px;
@@ -27,5 +30,5 @@
 }
 
 .error-message {
-  color: #ff3333;
+  color: variables.$red;
 }

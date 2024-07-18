@@ -1,3 +1,6 @@
+@charset "utf-8";
+@use '../variables';
+
 .taskList {
   margin: 50px auto;
   list-style: none;
@@ -25,13 +28,13 @@
   padding: 0 25px;
   text-overflow: normal;
   margin-right: 5px;
-  border: solid 1px #242F9B;
+  border: solid 1px variables.$blue;
   justify-content: center;
   align-items: center;
 }
 
 .active {
-  background-color: #242F9B;
+  background-color: variables.$blue;
   color: #ffffff;
 }
 
@@ -63,7 +66,7 @@
 }
 
 .error-message {
-  color: #ff3333;
+  color: variables.$red;
 }
 
 .display-select-wrapper {
