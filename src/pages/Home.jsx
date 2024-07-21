@@ -50,19 +50,20 @@ export const Home = () => {
   }, [lists])
 
   const handleSelectList = (id) => {
-    setSelectListId(id)
-    axios
-      .get(`${url}/lists/${id}/tasks`, {
-        headers: {
-          authorization: `Bearer ${cookies.token}`,
-        },
-      })
-      .then((res) => {
-        setTasks(res.data.tasks)
-      })
-      .catch((err) => {
-        setErrorMessage(`タスクの取得に失敗しました。${err}`)
-      })
+      setSelectListId(id)
+      axios
+        .get(`${url}/lists/${id}/tasks`, {
+          headers: {
+            authorization: `Bearer ${cookies.token}`,
+          },
+        })
+        .then((res) => {
+          setTasks(res.data.tasks)
+        })
+        .catch((err) => {
+          setErrorMessage(`タスクの取得に失敗しました。${err}`)
+        })
+
   }
   return (
     <div>
@@ -89,6 +90,12 @@ export const Home = () => {
                   key={key}
                   className={`list-tab-item ${isActive ? 'active' : ''}`}
                   onClick={() => handleSelectList(list.id)}
+                  tabIndex={key} 
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter') {
+                      handleSelectList(list.id);
+                    }
+                  }}
                 >
                   {list.title}
                 </li>
