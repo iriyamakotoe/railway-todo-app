@@ -1,13 +1,14 @@
 @charset "utf-8";
-@use '../variables';
+@use "../variables" as var;
+@use "../mixins" as mx;
 
 .new-list {
-  width: 1000px;
+  @include mx.main-content-width;
   margin: 0 auto;
 }
 
 .new-list-form {
-  color: variables.$gray;
+  color: var.$gray;
 }
 
 .new-list-title {
@@ -16,7 +17,7 @@
 }
 
 .new-list-button {
-  background-color: variables.$blue;
+  background-color: var.$blue;
   color: #ffffff;
   width: 80px;
   height: 40px;

@@ -1,13 +1,14 @@
 @charset "utf-8";
-@use '../variables';
+@use "../variables" as var;
+@use "../mixins" as mx;
 
 .new-task {
-  width: 1000px;
+  @include mx.main-content-width;
   margin: 0 auto;
 }
 
 .new-task-form {
-  color: variables.$gray;
+  color: var.$gray;
 }
 
 .new-task-select-list,
@@ -22,7 +23,7 @@
 }
 
 .new-task-button {
-  background-color: variables.$blue;
+  background-color: var.$blue;
   color: #ffffff;
   width: 80px;
   height: 40px;
@@ -30,5 +31,5 @@
 }
 
 .error-message {
-  color: variables.$red;
+  color: var.$red;
 }

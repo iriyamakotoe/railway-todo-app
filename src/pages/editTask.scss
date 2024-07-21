@@ -1,13 +1,14 @@
 @charset "utf-8";
-@use '../variables';
+@use "../variables" as var;
+@use "../mixins" as mx;
 
 .edit-task {
-  width: 1000px;
+  @include mx.main-content-width;
   margin: 0 auto;
 }
 
 .edit-task-form {
-  color: variables.$gray;
+  color: var.$gray;
 }
 
 .edit-task-title,
@@ -17,8 +18,8 @@
 }
 
 .delete-task-button {
-  color: variables.$red;
-  border: solid 1px variables.$red;
+  color: var.$red;
+  border: solid 1px var.$red;
   width: 80px;
   height: 40px;
   margin: 25px 5px;
@@ -26,7 +27,7 @@
 }
 
 .edit-task-button {
-  background-color: variables.$blue;
+  background-color: var.$blue;
   color: #ffffff;
   width: 80px;
   height: 40px;
@@ -34,5 +35,5 @@
 }
 
 .error-message {
-  color: variables.$red;
+  color: var.$red;
 }

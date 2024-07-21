@@ -1,5 +1,6 @@
 @charset "utf-8";
-@use '../variables';
+@use "../variables" as var;
+@use "../mixins" as mx;
 
 .signin {
   width: 500px;
@@ -12,7 +13,7 @@
 
 .email-label,
 .password-label {
-  color: variables.$gray;
+  color: var.$gray;
 }
 
 .email-input,
@@ -24,7 +25,7 @@
 }
 
 .signin-button {
-  background-color: variables.$blue;
+  background-color: var.$blue;
   color: #ffffff;
   width: 100px;
   height: 40px;
@@ -32,5 +33,5 @@
 }
 
 .error-message {
-  color: variables.$red;
+  color: var.$red;
 }
