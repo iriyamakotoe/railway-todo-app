@@ -14,6 +14,7 @@ export const Home = () => {
   const [errorMessage, setErrorMessage] = useState('')
   const [cookies] = useCookies()
   const handleIsDoneDisplayChange = (e) => setIsDoneDisplay(e.target.value)
+
   useEffect(() => {
     axios
       .get(`${url}/lists`, {
@@ -73,10 +74,10 @@ export const Home = () => {
             <h2>リスト一覧</h2>
             <div className="list-menu">
               <p>
-                <Link to="/list/new">リスト新規作成</Link>
+                <Link to="/list/new" className="btn">リスト新規作成</Link>
               </p>
               <p>
-                <Link to={`/lists/${selectListId}/edit`}>選択中のリストを編集</Link>
+                <Link to={`/lists/${selectListId}/edit`} className="btn">選択中のリストを編集</Link>
               </p>
             </div>
           </div>
@@ -97,7 +98,7 @@ export const Home = () => {
           <div className="tasks">
             <div className="tasks-header">
               <h2>タスク一覧</h2>
-              <Link to="/task/new">タスク新規作成</Link>
+              <p><Link to="/task/new" className="btn">タスク新規作成</Link></p>
             </div>
             <div className="display-select-wrapper">
               <select onChange={handleIsDoneDisplayChange} className="display-select">
@@ -116,6 +117,17 @@ export const Home = () => {
 // 表示するタスク
 const Tasks = (props) => {
   const { tasks, selectListId, isDoneDisplay } = props
+
+  // 残り日時の計算
+  const today = new Date();
+  const setDiffDate = (limit) => {
+    const date = new Date(limit.replace(':00Z',''))
+    const diffDays = parseInt((date-today) / (1000 * 60 * 60 * 24))
+    const diffHours = parseInt((date-today) / (1000 * 60 * 60) % 24)
+    const diffMinutes = parseInt((date-today) / (1000 * 60) % 60)
+    const diffText = diffDays + '日' + diffHours + '時間' + diffMinutes + '分'
+    return diffText;
+  }
   if (tasks === null) return <></>
 
   if (isDoneDisplay == 'done') {
@@ -128,9 +140,10 @@ const Tasks = (props) => {
           .map((task, key) => (
             <li key={key} className="task-item">
               <Link to={`/lists/${selectListId}/tasks/${task.id}`} className="task-item-link">
-                {task.title}
+                <span className="task-item-link-done complete">{task.done ? '完了' : '未完了'}</span>{task.title}
                 <br />
-                {task.done ? '完了' : '未完了'}
+                期限日時：{task.limit.replace('T',' ').replace(':00Z','')}
+                <br />
               </Link>
             </li>
           ))}
@@ -147,9 +160,11 @@ const Tasks = (props) => {
         .map((task, key) => (
           <li key={key} className="task-item">
             <Link to={`/lists/${selectListId}/tasks/${task.id}`} className="task-item-link">
-              {task.title}
+              <span className="task-item-link-done">{task.done ? '完了' : '未完了'}</span>{task.title}
               <br />
-              {task.done ? '完了' : '未完了'}
+              期限日時：{task.limit.replace('T',' ').replace(':00Z','')}
+              <br />
+              残り日時：{setDiffDate(task.limit)}
             </Link>
           </li>
         ))}

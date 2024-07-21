@@ -11,17 +11,23 @@ export const NewTask = () => {
   const [lists, setLists] = useState([])
   const [title, setTitle] = useState('')
   const [detail, setDetail] = useState('')
+  const [date, setDate] = useState('')
   const [errorMessage, setErrorMessage] = useState('')
   const [cookies] = useCookies()
   const history = useHistory()
   const handleTitleChange = (e) => setTitle(e.target.value)
   const handleDetailChange = (e) => setDetail(e.target.value)
+  const handleDateChange = (e) => setDate(e.target.value)
   const handleSelectList = (id) => setSelectListId(id)
+
   const onCreateTask = () => {
+    const limit = date+':00Z';
+    console.log(limit);
     const data = {
       title: title,
       detail: detail,
       done: false,
+      limit: limit
     }
 
     axios
@@ -34,7 +40,7 @@ export const NewTask = () => {
         history.push('/')
       })
       .catch((err) => {
-        setErrorMessage(`タスクの作成に失敗しました。${err}`)
+        setErrorMessage(`タスクの作成に失敗しました。${selectListId}: ${cookies.token} :${err}`)
       })
   }
 
@@ -79,6 +85,10 @@ export const NewTask = () => {
           <br />
           <textarea type="text" onChange={handleDetailChange} className="new-task-detail" />
           <br />
+          <label>期限日時</label>
+          <br />
+          <input type="datetime-local" onChange={handleDateChange} className="new-task-date" />
+          <br /><br />
           <button type="button" className="new-task-button" onClick={onCreateTask}>
             作成
           </button>

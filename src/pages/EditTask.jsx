@@ -12,17 +12,21 @@ export const EditTask = () => {
   const [cookies] = useCookies()
   const [title, setTitle] = useState('')
   const [detail, setDetail] = useState('')
+  const [date, setDate] = useState('')
   const [isDone, setIsDone] = useState()
   const [errorMessage, setErrorMessage] = useState('')
   const handleTitleChange = (e) => setTitle(e.target.value)
   const handleDetailChange = (e) => setDetail(e.target.value)
+  const handleDateChange = (e) => setDate(e.target.value)
   const handleIsDoneChange = (e) => setIsDone(e.target.value === 'done')
   const onUpdateTask = () => {
     console.log(isDone)
+    const limit = date+':00Z';
     const data = {
       title: title,
       detail: detail,
       done: isDone,
+      limit: limit,
     }
 
     axios
@@ -32,7 +36,6 @@ export const EditTask = () => {
         },
       })
       .then((res) => {
-        console.log(res.data)
         history.push('/')
       })
       .catch((err) => {
@@ -67,6 +70,7 @@ export const EditTask = () => {
         setTitle(task.title)
         setDetail(task.detail)
         setIsDone(task.done)
+        setDate(task.limit.replace(':00Z', ''))
       })
       .catch((err) => {
         setErrorMessage(`タスク情報の取得に失敗しました。${err}`)
@@ -88,6 +92,10 @@ export const EditTask = () => {
           <br />
           <textarea type="text" onChange={handleDetailChange} className="edit-task-detail" value={detail} />
           <br />
+          <label>期限日時</label>
+          <br />
+          <input type="datetime-local" onChange={handleDateChange} className="new-task-date" value={date} />
+          <br /><br />
           <div>
             <input
               type="radio"
