@@ -3,8 +3,7 @@
 @use "../mixins" as mx;
 
 .signin {
-  width: 500px;
-  margin: 0 auto;
+  @include mx.sign-content-width;
 }
 
 .signin-form {
@@ -22,6 +21,7 @@
   font-size: large;
   height: 30px;
   margin-bottom: 25px;
+  box-sizing: border-box;
 }
 
 .signin-button {

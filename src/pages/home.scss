@@ -17,7 +17,7 @@
 .list-menu {
   // display: flex;
   // flex-wrap: wrap;
-  text-align: center;
+  text-align: right;
 }
 
 .list-tab {
@@ -51,7 +51,6 @@
 .tasks-header {
   display: flex;
   justify-content: space-between;
-  align-items: center;
 }
 
 .task-item {
@@ -112,16 +111,16 @@
 }
 .btn {
   display: block;
-  border: 1px solid var.$blue;
-  padding: 3px 15px;
-  margin-bottom: 5px;
-  border-radius: 5px;
-  text-decoration: none;
+  // border: 1px solid var.$blue;
+  // padding: 3px 15px;
+  // margin-bottom: 5px;
+  // border-radius: 5px;
+  // text-decoration: none;
   color: var.$blue;
-  margin-left: 5px;
+  // margin-left: 5px;
   font-size: 14px;
   &:hover {
-    background: var.$blue;
-    color: #fff;
+    // background: var.$blue;
+    // color: #fff;
   }
 }

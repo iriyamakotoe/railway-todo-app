@@ -3,8 +3,7 @@
 @use "../mixins" as mx;
 
 .signup {
-  width: 500px;
-  margin: 0 auto;
+  @include mx.sign-content-width;
 }
 .signup-form {
   margin: 25px 0;
@@ -18,6 +17,7 @@
   font-size: large;
   height: 30px;
   margin-bottom: 25px;
+  box-sizing: border-box;
 }
 
 .signup-button {

@@ -132,7 +132,7 @@ const Tasks = (props) => {
     const diffDays = parseInt((date-today) / (1000 * 60 * 60 * 24))
     const diffHours = parseInt((date-today) / (1000 * 60 * 60) % 24)
     const diffMinutes = parseInt((date-today) / (1000 * 60) % 60)
-    const diffText = diffDays + '日' + diffHours + '時間' + diffMinutes + '分'
+    const diffText = `${diffDays}日 ${diffHours}時間 ${diffMinutes}分`
     return diffText;
   }
   if (tasks === null) return <></>
