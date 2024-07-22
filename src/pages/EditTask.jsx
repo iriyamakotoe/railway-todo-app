@@ -21,7 +21,7 @@ export const EditTask = () => {
   const handleIsDoneChange = (e) => setIsDone(e.target.value === 'done')
   const onUpdateTask = () => {
     console.log(isDone)
-    const limit = date+':00Z';
+    const limit = date + ':00Z'
     const data = {
       title: title,
       detail: detail,
@@ -95,7 +95,8 @@ export const EditTask = () => {
           <label>期限日時</label>
           <br />
           <input type="datetime-local" onChange={handleDateChange} className="new-task-date" value={date} />
-          <br /><br />
+          <br />
+          <br />
           <div>
             <input
               type="radio"

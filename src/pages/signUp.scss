@@ -1,6 +1,6 @@
 @charset "utf-8";
-@use "../variables" as var;
-@use "../mixins" as mx;
+@use '../variables' as var;
+@use '../mixins' as mx;
 
 .signup {
   @include mx.sign-content-width;

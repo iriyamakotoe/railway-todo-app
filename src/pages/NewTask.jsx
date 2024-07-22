@@ -21,13 +21,13 @@ export const NewTask = () => {
   const handleSelectList = (id) => setSelectListId(id)
 
   const onCreateTask = () => {
-    const limit = date+':00Z';
-    console.log(limit);
+    const limit = date + ':00Z'
+    console.log(limit)
     const data = {
       title: title,
       detail: detail,
       done: false,
-      limit: limit
+      limit: limit,
     }
 
     axios
@@ -88,7 +88,8 @@ export const NewTask = () => {
           <label>期限日時</label>
           <br />
           <input type="datetime-local" onChange={handleDateChange} className="new-task-date" />
-          <br /><br />
+          <br />
+          <br />
           <button type="button" className="new-task-button" onClick={onCreateTask}>
             作成
           </button>

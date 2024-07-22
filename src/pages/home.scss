@@ -1,6 +1,6 @@
 @charset "utf-8";
-@use "../variables" as var;
-@use "../mixins" as mx;
+@use '../variables' as var;
+@use '../mixins' as mx;
 
 .taskList {
   margin: 50px auto;
@@ -72,6 +72,9 @@
   text-decoration: none;
   color: #000000;
   padding: 30px;
+  @include var.breakPoint("sp") {
+    padding: 15px;
+  }
   span.task-item-link-done {
     background: #fff;
     color: var.$red;
@@ -85,7 +88,7 @@
       color: var.$gray;
       border: 1px solid var.$gray;
     }
-  } 
+  }
 }
 
 .error-message {

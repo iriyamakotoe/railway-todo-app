@@ -1,12 +1,12 @@
 @mixin main-content-width() {
-    width: 100%;
-    max-width: 1000px;
-    padding: 0 10px;
-    box-sizing: border-box;
+  width: 100%;
+  max-width: 1000px;
+  padding: 0 10px;
+  box-sizing: border-box;
 }
 @mixin sign-content-width() {
-    width: 100%;
-    max-width: 500px;
-    padding: 0 10px;
-    box-sizing: border-box;
+  width: 100%;
+  max-width: 500px;
+  padding: 0 10px;
+  box-sizing: border-box;
 }

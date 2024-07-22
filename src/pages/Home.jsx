@@ -50,20 +50,19 @@ export const Home = () => {
   }, [lists])
 
   const handleSelectList = (id) => {
-      setSelectListId(id)
-      axios
-        .get(`${url}/lists/${id}/tasks`, {
-          headers: {
-            authorization: `Bearer ${cookies.token}`,
-          },
-        })
-        .then((res) => {
-          setTasks(res.data.tasks)
-        })
-        .catch((err) => {
-          setErrorMessage(`タスクの取得に失敗しました。${err}`)
-        })
-
+    setSelectListId(id)
+    axios
+      .get(`${url}/lists/${id}/tasks`, {
+        headers: {
+          authorization: `Bearer ${cookies.token}`,
+        },
+      })
+      .then((res) => {
+        setTasks(res.data.tasks)
+      })
+      .catch((err) => {
+        setErrorMessage(`タスクの取得に失敗しました。${err}`)
+      })
   }
   return (
     <div>
@@ -75,10 +74,14 @@ export const Home = () => {
             <h2>リスト一覧</h2>
             <div className="list-menu">
               <p>
-                <Link to="/list/new" className="btn">リスト新規作成</Link>
+                <Link to="/list/new" className="btn">
+                  リスト新規作成
+                </Link>
               </p>
               <p>
-                <Link to={`/lists/${selectListId}/edit`} className="btn">選択中のリストを編集</Link>
+                <Link to={`/lists/${selectListId}/edit`} className="btn">
+                  選択中のリストを編集
+                </Link>
               </p>
             </div>
           </div>
@@ -90,10 +93,10 @@ export const Home = () => {
                   key={key}
                   className={`list-tab-item ${isActive ? 'active' : ''}`}
                   onClick={() => handleSelectList(list.id)}
-                  tabIndex={key} 
+                  tabIndex={key}
                   onKeyDown={(e) => {
                     if (e.key === 'Enter') {
-                      handleSelectList(list.id);
+                      handleSelectList(list.id)
                     }
                   }}
                 >
@@ -105,7 +108,11 @@ export const Home = () => {
           <div className="tasks">
             <div className="tasks-header">
               <h2>タスク一覧</h2>
-              <p><Link to="/task/new" className="btn">タスク新規作成</Link></p>
+              <p>
+                <Link to="/task/new" className="btn">
+                  タスク新規作成
+                </Link>
+              </p>
             </div>
             <div className="display-select-wrapper">
               <select onChange={handleIsDoneDisplayChange} className="display-select">
@@ -126,14 +133,14 @@ const Tasks = (props) => {
   const { tasks, selectListId, isDoneDisplay } = props
 
   // 残り日時の計算
-  const today = new Date();
+  const today = new Date()
   const setDiffDate = (limit) => {
-    const date = new Date(limit.replace(':00Z',''))
-    const diffDays = parseInt((date-today) / (1000 * 60 * 60 * 24))
-    const diffHours = parseInt((date-today) / (1000 * 60 * 60) % 24)
-    const diffMinutes = parseInt((date-today) / (1000 * 60) % 60)
+    const date = new Date(limit.replace(':00Z', ''))
+    const diffDays = parseInt((date - today) / (1000 * 60 * 60 * 24))
+    const diffHours = parseInt(((date - today) / (1000 * 60 * 60)) % 24)
+    const diffMinutes = parseInt(((date - today) / (1000 * 60)) % 60)
     const diffText = `${diffDays}日 ${diffHours}時間 ${diffMinutes}分`
-    return diffText;
+    return diffText
   }
   if (tasks === null) return <></>
 
@@ -147,9 +154,10 @@ const Tasks = (props) => {
           .map((task, key) => (
             <li key={key} className="task-item">
               <Link to={`/lists/${selectListId}/tasks/${task.id}`} className="task-item-link">
-                <span className="task-item-link-done complete">{task.done ? '完了' : '未完了'}</span>{task.title}
+                <span className="task-item-link-done complete">{task.done ? '完了' : '未完了'}</span>
+                {task.title}
                 <br />
-                期限日時：{task.limit.replace('T',' ').replace(':00Z','')}
+                期限日時：{task.limit.replace('T', ' ').replace(':00Z', '')}
                 <br />
               </Link>
             </li>
@@ -167,9 +175,10 @@ const Tasks = (props) => {
         .map((task, key) => (
           <li key={key} className="task-item">
             <Link to={`/lists/${selectListId}/tasks/${task.id}`} className="task-item-link">
-              <span className="task-item-link-done">{task.done ? '完了' : '未完了'}</span>{task.title}
+              <span className="task-item-link-done">{task.done ? '完了' : '未完了'}</span>
+              {task.title}
               <br />
-              期限日時：{task.limit.replace('T',' ').replace(':00Z','')}
+              期限日時：{task.limit.replace('T', ' ').replace(':00Z', '')}
               <br />
               残り日時：{setDiffDate(task.limit)}
             </Link>

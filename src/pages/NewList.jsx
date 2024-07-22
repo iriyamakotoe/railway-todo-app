@@ -12,7 +12,7 @@ export const NewList = () => {
   const [title, setTitle] = useState('')
   const [errorMessage, setErrorMessage] = useState('')
   const handleTitleChange = (e) => setTitle(e.target.value)
-  console.log(`${cookies.token}`);
+  console.log(`${cookies.token}`)
   const onCreateList = () => {
     const data = {
       title: title,
