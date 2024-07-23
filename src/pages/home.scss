@@ -72,7 +72,7 @@
   text-decoration: none;
   color: #000000;
   padding: 30px;
-  @include var.breakPoint("sp") {
+  @include var.breakPoint('sp') {
     padding: 15px;
   }
   span.task-item-link-done {
