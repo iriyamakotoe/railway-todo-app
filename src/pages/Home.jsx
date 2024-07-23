@@ -144,7 +144,7 @@ const Tasks = (props) => {
   }
   if (tasks === null) return <></>
 
-  if (isDoneDisplay == 'done') {
+  if (isDoneDisplay === 'done') {
     return (
       <ul>
         {tasks
