@@ -130,7 +130,7 @@ export const Home = () => {
 
 // 表示するタスク
 const Tasks = (props) => {
-  const { tasks, selectListId, isDoneDisplay } = props
+  const { tasks, selectListId, isDoneDisplay } = props // eslint-disable-line
 
   // 残り日時の計算
   const today = new Date()
@@ -148,7 +148,7 @@ const Tasks = (props) => {
     return (
       <ul>
         {tasks
-          .filter((task) => {
+          .filter((task) => {  // eslint-disable-line
             return task.done === true
           })
           .map((task, key) => (
@@ -169,7 +169,7 @@ const Tasks = (props) => {
   return (
     <ul>
       {tasks
-        .filter((task) => {
+        .filter((task) => {  // eslint-disable-line
           return task.done === false
         })
         .map((task, key) => (

@@ -35,7 +35,7 @@ export const EditTask = () => {
           authorization: `Bearer ${cookies.token}`,
         },
       })
-      .then((res) => {
+      .then(() => {
         navigate('/')
       })
       .catch((err) => {
